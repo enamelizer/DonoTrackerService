@@ -59,11 +59,12 @@
         }
 
         function UpdateTotal(totalDonated) {
-            $("#total").text(totalDonated);
+            var formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalDonated);
+            $("#total").text(formattedTotal);
         }
 
         function UpdateDonations(donations) {
-            var donation = donations.data.slice(-5).reverse();
+            var donation = donations.data.slice(0,6);
 
             $('#donationList').empty();
 
@@ -74,7 +75,7 @@
     </script>
     <div id="box1">
         <img src="img/NAMI-badge.png" />
-        <h1>Total $<label id="total">0</label><br></h1>
+        <h1>Total <label id="total">0</label><br></h1>
         <h3>Latest donations</h3>
         <div id="donationList"></div>
     </div>

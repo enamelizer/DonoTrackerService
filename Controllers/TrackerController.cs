@@ -20,7 +20,8 @@ namespace DonoTrackerService.Controllers
 
         public async Task<IHttpActionResult> GetDonationList()
         {
-            var content = await GetJson("https://donate.nami.org/frs-api/fundraising-pages/3425456/feed-item-donations");
+            
+            var content = await GetJson("https://donate.nami.org/frs-api/fundraising-pages/3425456/initial-feed?with=member,linkable&sort=created_at:desc&per_page=5&campaignId=216520");
             return Ok(content);
         }
 
